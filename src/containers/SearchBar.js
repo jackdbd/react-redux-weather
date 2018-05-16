@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchWeather } from "../actions/actionCreators";
+import {
+  Box,
+  Button,
+  Input,
+  Columns,
+  Column,
+} from "bloomer";
 
 class SearchBar extends Component {
   constructor(props) {
@@ -24,16 +31,25 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onFormSubmit}>
-        <input
-          placeholder="Get a five day forecast in your favourite cities"
-          value={this.state.term}
-          onChange={this.onInputChange}
-        />
-        <span>
-          <button type="submit">Submit</button>
-        </span>
-      </form>
+      <Box>
+        <form onSubmit={this.onFormSubmit}>
+          <Columns isCentered>
+            <Column isSize="3/4">
+              <Input
+                type="text"
+                placeholder="Get a five day forecast in your favourite cities"
+                value={this.state.term}
+                onChange={this.onInputChange}
+              />
+            </Column>
+            <Column isSize="1/4">
+              <Button type="submit" isOutlined isColor="info">
+                Submit
+              </Button>
+            </Column>
+          </Columns>
+        </form>
+      </Box>
     );
   }
 }

@@ -6,6 +6,7 @@ import ReduxPromise from "redux-promise";
 import logger from "redux-logger";
 import App from "./components/App";
 import reducers from "./reducers";
+import "bulma/css/bulma.css";
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise, logger)(
   createStore

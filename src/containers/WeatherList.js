@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Chart from "../components/Chart";
 import MapboxMap from "../components/MapboxMap";
+import { Box } from "bloomer";
+import styled from 'styled-components'
+
+const Table = styled.table`
+  table-layout:fixed;
+  width: 100%;
+`
 
 class WeatherList extends Component {
   renderWeather(obj) {
@@ -68,7 +75,8 @@ class WeatherList extends Component {
 
   render() {
     return (
-      <table>
+      <Box>
+      <Table>
         <thead>
           <tr>
             <th>City</th>
@@ -78,7 +86,8 @@ class WeatherList extends Component {
           </tr>
         </thead>
         <tbody>{this.props.weather.map(this.renderWeather)}</tbody>
-      </table>
+      </Table>
+      </Box>
     );
   }
 }
