@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Chart from "../components/Chart";
+import MapboxMap from "../components/MapboxMap";
 
 class WeatherList extends Component {
   renderWeather(obj) {
     if (!obj) return <div>No data!</div>;
     const cityName = obj.city.name;
+    const { lon, lat } = obj.city.coord;
+
     const temperatureCoordinates = obj.list.map((d, i) => {
       return { day: i, temp: d.main.temp };
     });
@@ -32,6 +35,9 @@ class WeatherList extends Component {
     return (
       <tr key={cityName}>
         <td>{cityName}</td>
+        <td>
+          <MapboxMap lon={lon} lat={lat} />
+        </td>
         <td>
           <Chart
             data={[temperatureObj]}
