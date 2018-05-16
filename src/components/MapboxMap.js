@@ -17,7 +17,7 @@ class MapboxMap extends Component {
   }
 
   render() {
-    return <span ref="map" />;
+    return <div ref="map" />;
   }
 }
 

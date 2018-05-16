@@ -41,7 +41,6 @@ class WeatherList extends Component {
 
     return (
       <tr key={cityName}>
-        <td>{cityName}</td>
         <td>
           <MapboxMap lon={lon} lat={lat} />
         </td>
