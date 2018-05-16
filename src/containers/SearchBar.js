@@ -2,13 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchWeather } from "../actions/actionCreators";
-import {
-  Box,
-  Button,
-  Input,
-  Columns,
-  Column,
-} from "bloomer";
+import { Box, Button, Input, Columns, Column } from "bloomer";
 
 class SearchBar extends Component {
   constructor(props) {
