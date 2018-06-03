@@ -1,20 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import ReduxPromise from "redux-promise";
-import logger from "redux-logger";
-import App from "./components/App";
-import reducers from "./reducers";
-import "bulma/css/bulma.css";
-
-const createStoreWithMiddleware = applyMiddleware(ReduxPromise, logger)(
-  createStore
-);
+import { AppWithRedux } from "./containers/App";
+import store from "./store";
+import "../node_modules/materialize-css/dist/css/materialize.min.css";
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
+  <Provider store={store}>
+    <AppWithRedux />
   </Provider>,
   document.getElementById("root")
 );

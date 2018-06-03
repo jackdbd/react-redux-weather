@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import Chart from "../components/Chart";
 import MapboxMap from "../components/MapboxMap";
-import { Box } from "bloomer";
 import styled from "styled-components";
 
 const Table = styled.table`
@@ -74,7 +72,7 @@ class WeatherList extends Component {
 
   render() {
     return (
-      <Box>
+      <div>
         <Table>
           <thead>
             <tr>
@@ -84,17 +82,11 @@ class WeatherList extends Component {
               <th>Humidity</th>
             </tr>
           </thead>
-          <tbody>{this.props.weather.map(this.renderWeather)}</tbody>
+          <tbody>{this.props.cities.map(this.renderWeather)}</tbody>
         </Table>
-      </Box>
+      </div>
     );
   }
 }
 
-function mapStateToProps(state) {
-  const { weather } = state;
-  return { weather };
-}
-
-// Promote the "dumb", redux-unaware, presentational component, to a "smart", redux-aware, container component
-export default connect(mapStateToProps)(WeatherList);
+export default WeatherList;
