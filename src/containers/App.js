@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import { RingLoader, MoonLoader, PropagateLoader } from "react-spinners";
 import { fetchWeather } from "../actions";
 import Navbar from "../components/Navbar";
 import SearchBar from "../components/SearchBar";
 import WeatherList from "../components/WeatherList";
+import Footer from "../components/Footer";
 import "../globalStyle";
 
 class App extends Component {
@@ -13,12 +15,18 @@ class App extends Component {
   }
 
   render() {
-    const { data, fetchWeather } = this.props;
+    const { data, errorMessage, fetchWeather } = this.props;
     return (
       <div className="container">
         <Navbar />
-        <SearchBar fetchWeather={fetchWeather} />
+        <SearchBar fetchWeather={fetchWeather} errorMessage={errorMessage} />
         <WeatherList data={data} />
+        <div className="row">
+          <div className="col s12 offset-s6">
+            <PropagateLoader color={"#0336ff"} loading={this.props.isLoading} />
+          </div>
+        </div>
+        <Footer />
       </div>
     );
   }
@@ -29,9 +37,11 @@ class App extends Component {
   available to this container component via props.
 */
 function mapStateToProps(state) {
-  const { data } = state.weather;
+  const { data, errorMessage, isLoading } = state.weather;
   const props = {
-    data
+    data,
+    errorMessage,
+    isLoading
   };
   return props;
 }

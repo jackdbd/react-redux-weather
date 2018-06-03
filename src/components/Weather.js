@@ -10,9 +10,9 @@ const Weather = props => {
   const pressureCoordinates = list.map((d, i) => {
     return { day: i, temp: d.main.pressure };
   });
-  const humidityCoordinates = list.map((d, i) => {
-    return { day: i, temp: d.main.humidity };
-  });
+  // const humidityCoordinates = list.map((d, i) => {
+  //   return { day: i, temp: d.main.humidity };
+  // });
 
   const temperatureObj = {
     color: "steelblue",
@@ -22,41 +22,44 @@ const Weather = props => {
     color: "orange",
     coordinates: pressureCoordinates
   };
-  const humidityObj = {
-    color: "#1fa713",
-    coordinates: humidityCoordinates
-  };
+  // const humidityObj = {
+  //   color: "#1fa713",
+  //   coordinates: humidityCoordinates
+  // };
 
   return (
-    <tr key={city.name}>
-      <td>
+    <div className="row" key={city.name}>
+      <div
+        className="grid-example col s12 m4"
+        style={{ backgroundColor: "green" }}
+      >
         <MapboxMap lon={city.coord.lon} lat={city.coord.lat} />
-      </td>
-      <td>
+      </div>
+      <div
+        className="grid-example col s12 m4"
+        style={{ backgroundColor: "red" }}
+      >
         <Chart
           data={[temperatureObj]}
           title={"Temperature"}
-          width={300}
-          height={150}
+          width={600}
+          height={350}
+          margin={{ left: 50, right: 0, bottom: 0, top: 0 }}
         />
-      </td>
-      <td>
+      </div>
+      <div
+        className="grid-example col s12 m4"
+        style={{ backgroundColor: "blue" }}
+      >
         <Chart
           data={[pressureObj]}
           title={"Pressure"}
           width={300}
           height={150}
+          margin={{ left: 50, right: 0, bottom: 0, top: 0 }}
         />
-      </td>
-      <td>
-        <Chart
-          data={[humidityObj]}
-          title={"Humidity"}
-          width={300}
-          height={150}
-        />
-      </td>
-    </tr>
+      </div>
+    </div>
   );
 };
 

@@ -4,6 +4,13 @@ import { XYFrame } from "semiotic";
 
 const Chart = props => {
   const { data, title, height, width } = props;
+  const margin = {
+    top: props.margin ? props.margin.top : 0,
+    right: props.margin ? props.margin.right : 0,
+    bottom: props.margin ? props.margin.bottom : 0,
+    left: props.margin ? props.margin.left : 0
+  };
+  const { left, right, bottom, top } = margin;
 
   // TODO: add horizontal line (average temperature, pressure, humidity)
 
@@ -17,7 +24,7 @@ const Chart = props => {
       yAccessor={"temp"}
       lineStyle={d => ({ stroke: d.color })}
       lineType={{ type: "line", interpolator: curveCardinal }}
-      margin={{ left: 40, bottom: 30, right: 10, top: 10 }}
+      margin={{ left, bottom, right, top }}
       axes={[
         {
           orient: "left"

@@ -20,6 +20,7 @@ class SearchBar extends Component {
   }
 
   render() {
+    const { errorMessage } = this.props;
     return (
       <div className="row">
         <form onSubmit={this.onFormSubmit}>
@@ -31,7 +32,9 @@ class SearchBar extends Component {
               onChange={this.onInputChange}
               style={{ marginBottom: "0px" }}
             />
-            {/* <label>Five day forecast</label> */}
+            {errorMessage ? (
+              <label className="red-text">{errorMessage}</label>
+            ) : null}
           </div>
           <div className="col s3">
             <button type="submit" className="teal btn-flat right white-text">

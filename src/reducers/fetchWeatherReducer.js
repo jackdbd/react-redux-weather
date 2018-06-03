@@ -1,7 +1,9 @@
 import { FETCH_WEATHER } from "../actions";
 
 const initialState = {
-  data: []
+  data: [],
+  isLoading: false,
+  errorMessage: ""
 };
 
 export default function(state = initialState, action) {
@@ -14,11 +16,22 @@ export default function(state = initialState, action) {
       };
       return {
         ...state,
-        data: state.data.concat(obj)
+        isLoading: false,
+        data: state.data.concat(obj),
+        errorMessage: ""
+      };
+    case `${FETCH_WEATHER}_PENDING`:
+      return {
+        ...state,
+        isLoading: true,
+        errorMessage: ""
       };
     case `${FETCH_WEATHER}_REJECTED`:
-      console.log("TODO: FETCH_WEATHER_REJECTED");
-      return state;
+      return {
+        ...state,
+        isLoading: false,
+        errorMessage: "Cannot find the city you just typed"
+      };
     default:
       return state;
   }
