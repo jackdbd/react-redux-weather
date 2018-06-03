@@ -10,6 +10,8 @@ const Footer = props => {
             <p className="grey-text text-lighten-4">
               You can use rows and columns here to organize your footer content.
             </p>
+            <i className="material-icons left">wb_sunny</i>
+            <i className="material-icons left">done</i>
           </div>
           <div className="col l4 offset-l2 s12">
             <h5 className="white-text">Built with</h5>
@@ -18,6 +20,8 @@ const Footer = props => {
                 <a
                   className="grey-text text-lighten-3"
                   href="https://reactjs.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   React
                 </a>
@@ -26,6 +30,8 @@ const Footer = props => {
                 <a
                   className="grey-text text-lighten-3"
                   href="https://redux.js.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Redux
                 </a>
@@ -34,6 +40,8 @@ const Footer = props => {
                 <a
                   className="grey-text text-lighten-3"
                   href="https://materializecss.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Materialize CSS
                 </a>
@@ -42,6 +50,8 @@ const Footer = props => {
                 <a
                   className="grey-text text-lighten-3"
                   href="https://www.openweathermap.org/api"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   OpenWeatherMap
                 </a>
@@ -50,6 +60,8 @@ const Footer = props => {
                 <a
                   className="grey-text text-lighten-3"
                   href="https://www.mapbox.com/mapbox-gl-js/api/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Mapbox GL JS
                 </a>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { RingLoader, MoonLoader, PropagateLoader } from "react-spinners";
+import { PropagateLoader } from "react-spinners";
 import { fetchWeather } from "../actions";
 import Navbar from "../components/Navbar";
 import SearchBar from "../components/SearchBar";
@@ -20,12 +20,18 @@ class App extends Component {
       <div className="container">
         <Navbar />
         <SearchBar fetchWeather={fetchWeather} errorMessage={errorMessage} />
-        <WeatherList data={data} />
-        <div className="row">
-          <div className="col s12 offset-s6">
-            <PropagateLoader color={"#0336ff"} loading={this.props.isLoading} />
+        {this.props.isLoading ? (
+          <div className="row">
+            <div className="col s12 offset-s6">
+              <PropagateLoader
+                color={"#0336ff"}
+                loading={this.props.isLoading}
+              />
+            </div>
           </div>
-        </div>
+        ) : null}
+
+        <WeatherList data={data} />
         <Footer />
       </div>
     );

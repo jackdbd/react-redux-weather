@@ -6,19 +6,40 @@ const MAPBOX_ACCESS_TOKEN =
 mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
 
 class MapboxMap extends Component {
+  constructor(props) {
+    super(props);
+    this.mapRef = React.createRef();
+  }
+
   componentDidMount() {
     const { lon, lat } = this.props;
-    new mapboxgl.Map({
-      container: this.refs.map,
+    const options = {
+      container: this.mapRef.current,
       style: "mapbox://styles/mapbox/streets-v9",
       center: [lon, lat],
       zoom: 10
-    });
+    };
+    this.map = new mapboxgl.Map(options);
+  }
+  componentDidUpdate(prevProps, prevState) {
+    // console.log(prevProps.width, this.props.width)
+    if (this.props.width !== prevProps.width) {
+      this.map.resize();
+    }
   }
 
   render() {
-    return <div ref="map" />;
+    const { width, height } = this.props;
+    return (
+      <div>
+        <div
+          ref={this.mapRef}
+          style={{ height: `${height}px`, width: `${width}px` }}
+        >
+          ;
+        </div>
+      </div>
+    );
   }
 }
-
 export default MapboxMap;

@@ -23,24 +23,32 @@ class SearchBar extends Component {
     const { errorMessage } = this.props;
     return (
       <div className="row">
-        <form onSubmit={this.onFormSubmit}>
-          <div className="col s9">
-            <input
-              type="text"
-              placeholder="San Francisco"
-              value={this.state.term}
-              onChange={this.onInputChange}
-              style={{ marginBottom: "0px" }}
-            />
-            {errorMessage ? (
-              <label className="red-text">{errorMessage}</label>
-            ) : null}
-          </div>
-          <div className="col s3">
-            <button type="submit" className="teal btn-flat right white-text">
-              Submit
-              <i className="material-icons right">wb_sunny</i>
-            </button>
+        <form
+          className="col s12"
+          onSubmit={this.onFormSubmit}
+          style={{ marginTop: "1rem" }}
+        >
+          <div className="row" style={{ marginBottom: "0rem" }}>
+            <div className="input-field col s6 offset-s2">
+              <input
+                type="text"
+                placeholder="e.g. San Francisco, Rome, Tokyo"
+                value={this.state.term}
+                onChange={this.onInputChange}
+              />
+              {errorMessage ? (
+                <label className="red-text" style={{ marginTop: "2.5rem" }}>
+                  {errorMessage}
+                </label>
+              ) : null}
+            </div>
+
+            <div className="input-field col s3">
+              <button type="submit" className="teal btn-flat white-text">
+                Submit
+                <i className="material-icons right">wb_sunny</i>
+              </button>
+            </div>
           </div>
         </form>
       </div>

@@ -8,17 +8,6 @@ const Navbar = props => {
         <span className="brand-logo" style={{ fontFamily: "Lobster" }}>
           React Weather
         </span>
-        <ul className="right">
-          <li>
-            <a
-              href="https://github.com/jackdbd/fullstack-express-react"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Code
-            </a>
-          </li>
-        </ul>
       </div>
     </nav>
   );

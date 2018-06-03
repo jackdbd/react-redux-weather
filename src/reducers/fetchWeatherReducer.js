@@ -17,7 +17,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        data: state.data.concat(obj),
+        data: [obj].concat(state.data),
         errorMessage: ""
       };
     case `${FETCH_WEATHER}_PENDING`:
