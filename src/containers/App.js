@@ -13,12 +13,12 @@ class App extends Component {
   }
 
   render() {
-    const { cities, fetchWeather } = this.props;
+    const { data, fetchWeather } = this.props;
     return (
       <div className="container">
         <Navbar />
         <SearchBar fetchWeather={fetchWeather} />
-        <WeatherList cities={cities} />
+        <WeatherList data={data} />
       </div>
     );
   }
@@ -29,9 +29,9 @@ class App extends Component {
   available to this container component via props.
 */
 function mapStateToProps(state) {
-  const { cities } = state.weather;
+  const { data } = state.weather;
   const props = {
-    cities
+    data
   };
   return props;
 }

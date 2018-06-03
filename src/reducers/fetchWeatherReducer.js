@@ -1,7 +1,7 @@
 import { FETCH_WEATHER } from "../actions";
 
 const initialState = {
-  cities: []
+  data: []
 };
 
 export default function(state = initialState, action) {
@@ -14,7 +14,7 @@ export default function(state = initialState, action) {
       };
       return {
         ...state,
-        cities: state.cities.concat(obj)
+        data: state.data.concat(obj)
       };
     case `${FETCH_WEATHER}_REJECTED`:
       console.log("TODO: FETCH_WEATHER_REJECTED");
