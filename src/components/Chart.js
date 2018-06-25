@@ -21,7 +21,7 @@ const Chart = props => {
       lines={data}
       lineDataAccessor={"coordinates"}
       xAccessor={"day"}
-      yAccessor={"temp"}
+      yAccessor={"value"}
       lineStyle={d => ({ stroke: d.color })}
       lineType={{ type: "line", interpolator: curveCardinal }}
       margin={{ left, bottom, right, top }}

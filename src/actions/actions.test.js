@@ -44,9 +44,9 @@ describe("Async fetch weather action", () => {
     expect(store.getActions()).toHaveLength(0);
 
     /*
-      We expect that a successful fetchWeather (which we are mocking) dispatches
-      2 actions to the mock redux store: one for the start of the HTTP request,
-      one for the success of that request.
+      We expect that a successful fetchWeather dispatches 2 actions to the mock
+      redux store: one for the start of the HTTP request, one for the success of
+      that request.
     */
     const expectedActions = [
       { type: types.FETCH_WEATHER_START },
