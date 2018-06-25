@@ -1,15 +1,15 @@
-import { FETCH_WEATHER } from "../actions";
+import * as actions from "../actions/actionTypes";
 
-const initialState = {
+export const initialState = {
   data: [],
   isLoading: false,
   errorMessage: ""
 };
 
-export default function(state = initialState, action) {
+export function weatherReducer(state = initialState, action) {
   switch (action.type) {
-    case `${FETCH_WEATHER}_FULFILLED`:
-      const { city, list } = action.payload.data;
+    case actions.FETCH_WEATHER_SUCCESS:
+      const { city, list } = action.payload;
       const obj = {
         city,
         list
@@ -20,13 +20,13 @@ export default function(state = initialState, action) {
         data: [obj].concat(state.data),
         errorMessage: ""
       };
-    case `${FETCH_WEATHER}_PENDING`:
+    case actions.FETCH_WEATHER_START:
       return {
         ...state,
         isLoading: true,
         errorMessage: ""
       };
-    case `${FETCH_WEATHER}_REJECTED`:
+    case actions.FETCH_WEATHER_FAIL:
       return {
         ...state,
         isLoading: false,

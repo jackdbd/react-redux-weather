@@ -18,8 +18,4 @@ describe("<Navbar />", () => {
         .hasClass("nav-wrapper")
     ).toEqual(true);
   });
-  it("renders the correct number of <li>", () => {
-    const wrapper = mount(<Navbar />);
-    expect(wrapper.find("li")).toHaveLength(1);
-  });
 });

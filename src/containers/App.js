@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { PropagateLoader } from "react-spinners";
-import { fetchWeather } from "../actions";
+import { fetchWeather } from "../actions/actionCreators";
 import Navbar from "../components/Navbar";
 import SearchBar from "../components/SearchBar";
 import WeatherList from "../components/WeatherList";
@@ -66,6 +66,9 @@ function mapDispatchToProps(dispatch) {
   Promote the "dumb", redux-unaware, presentational component, to a "smart",
   redux-aware, container component.
 */
-const AppWithRedux = connect(mapStateToProps, mapDispatchToProps)(App);
+const AppWithRedux = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
 
 export { App, AppWithRedux };
