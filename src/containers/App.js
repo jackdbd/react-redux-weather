@@ -1,13 +1,29 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import styled from "styled-components";
 import { PropagateLoader } from "react-spinners";
 import { fetchWeather } from "../actions/actionCreators";
-import Navbar from "../components/Navbar";
+import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import WeatherList from "../components/WeatherList";
 import Footer from "../components/Footer";
 import "../globalStyle";
+
+// font-family: "Montserrat", sans-serif;
+// font-family: "Lobster", cursive;
+const Container = styled.div`
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
+
+const Content = styled.div`
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+`;
 
 class App extends Component {
   componentDidMount() {
@@ -15,25 +31,28 @@ class App extends Component {
   }
 
   render() {
+    const primaryColor = "orange darken-2";
+    const secondaryColor = "teal lighten-2";
     const { data, errorMessage, fetchWeather } = this.props;
     return (
-      <div className="container">
-        <Navbar />
-        <SearchBar fetchWeather={fetchWeather} errorMessage={errorMessage} />
-        {this.props.isLoading ? (
-          <div className="row">
-            <div className="col s12 offset-s6">
-              <PropagateLoader
-                color={"#0336ff"}
-                loading={this.props.isLoading}
-              />
+      <Container>
+        <Header text={"React Redux Weather"} primaryColor={primaryColor} />
+        <Content>
+          <SearchBar fetchWeather={fetchWeather} errorMessage={errorMessage} />
+          {this.props.isLoading ? (
+            <div className="row">
+              <div className="col s12 offset-s6">
+                <PropagateLoader
+                  color={"#0336ff"}
+                  loading={this.props.isLoading}
+                />
+              </div>
             </div>
-          </div>
-        ) : null}
-
-        <WeatherList data={data} />
-        <Footer />
-      </div>
+          ) : null}
+          <WeatherList data={data} />
+        </Content>
+        <Footer primaryColor={primaryColor} />
+      </Container>
     );
   }
 }

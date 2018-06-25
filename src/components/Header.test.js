@@ -1,15 +1,15 @@
 import React from "react";
 import { shallow, mount, render } from "enzyme";
 import "../setupEnzymeTests";
-import Navbar from "./Navbar";
+import Header from "./Header";
 
-describe("<Navbar />", () => {
+describe("<Header />", () => {
   it("renders one <nav>", () => {
-    const wrapper = mount(<Navbar />);
+    const wrapper = mount(<Header />);
     expect(wrapper.find("nav")).toHaveLength(1);
   });
   it("has the correct class", () => {
-    const wrapper = mount(<Navbar />);
+    const wrapper = mount(<Header />);
     expect(
       wrapper
         .find("nav")
