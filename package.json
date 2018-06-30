@@ -13,19 +13,22 @@
     "ci": "npm-run-all --sequential test:verbose coverage"
   },
   "dependencies": {
+    "@data-ui/sparkline": "^0.0.59",
+    "@data-ui/theme": "^0.0.59",
     "axios": "0.18.0",
     "http-status-codes": "1.3.0",
     "materialize-css": "0.100.2",
+    "prop-types": "^15.6.2",
     "react": "16.4.1",
     "react-dom": "16.4.1",
     "react-redux": "5.0.7",
     "react-resize-aware": "2.7.1",
     "react-scripts": "1.1.4",
     "react-spinners": "0.3.2",
+    "react-tooltip": "^3.6.1",
     "redux": "4.0.0",
     "redux-promise-middleware": "5.1.1",
     "redux-thunk": "2.3.0",
-    "semiotic": "1.11.13",
     "styled-components": "3.3.3"
   },
   "devDependencies": {

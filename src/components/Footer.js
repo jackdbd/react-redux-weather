@@ -1,16 +1,22 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Footer = props => {
-  const primaryColor = props.primaryColor || "orange";
-  const textClass = "grey-text text-lighten-3";
-  const className = `page-footer ${primaryColor}`;
+  const className = `page-footer ${props.color}`;
+  let textClass;
+  const arr = props.textColor.split(" ");
+  if (arr.length === 1) {
+    textClass = `${arr[0]}-text`;
+  } else {
+    textClass = `${arr[0]}-text ${arr[1]}-text`;
+  }
   return (
     <footer className={className}>
       <div className="container">
         <div className="row">
           <div className="col s12 m6">
-            <h5 className="white-text">About</h5>
-            <span className="grey-text text-lighten-4">
+            <h5 className={textClass}>About</h5>
+            <span className={textClass}>
               Code:{" "}
               <a
                 className={textClass}
@@ -23,7 +29,7 @@ const Footer = props => {
             </span>
 
             <br />
-            <span className="grey-text text-lighten-4">
+            <span className={textClass}>
               Me:{" "}
               <a
                 className={textClass}
@@ -54,7 +60,7 @@ const Footer = props => {
             </span>
           </div>
           <div className="col s12 m6">
-            <h5 className="white-text">Built with</h5>
+            <h5 className={textClass}>Built with</h5>
             <ul>
               <li>
                 <a
@@ -88,7 +94,7 @@ const Footer = props => {
               </li>
               <li>
                 <a
-                  className="grey-text text-lighten-3"
+                  className={textClass}
                   href="https://www.openweathermap.org/api"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -98,12 +104,12 @@ const Footer = props => {
               </li>
               <li>
                 <a
-                  className="grey-text text-lighten-3"
-                  href="https://www.mapbox.com/mapbox-gl-js/api/"
+                  className={textClass}
+                  href="https://github.com/williaster/data-ui"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Mapbox GL JS
+                  data-ui/sparkline
                 </a>
               </li>
             </ul>
@@ -112,6 +118,18 @@ const Footer = props => {
       </div>
     </footer>
   );
+};
+
+Footer.defaultProps = {
+  text: "Header text here",
+  color: "purple darken-4",
+  textColor: "white"
+};
+
+Footer.propTypes = {
+  text: PropTypes.string,
+  color: PropTypes.string,
+  textColor: PropTypes.string
 };
 
 export default Footer;

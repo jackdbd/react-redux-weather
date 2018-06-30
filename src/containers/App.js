@@ -27,32 +27,45 @@ const Content = styled.div`
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchWeather();
+    // start data loading with some city, so the user sees something
+    this.props.fetchWeather("San Francisco");
   }
 
   render() {
     const primaryColor = "orange darken-2";
-    const secondaryColor = "teal lighten-2";
+    const secondaryColor = "purple darken-4";
+    /*
+      Pass the fetchWeather action creator down to the component hierarchy.
+      We want to call it - namely we want to dispatch a new action to the redux
+      store - when we enter a new city in the search bar.
+    */
     const { data, errorMessage, fetchWeather } = this.props;
     return (
-      <Container>
-        <Header text={"React Redux Weather"} primaryColor={primaryColor} />
-        <Content>
-          <SearchBar fetchWeather={fetchWeather} errorMessage={errorMessage} />
-          {this.props.isLoading ? (
-            <div className="row">
-              <div className="col s12 offset-s6">
-                <PropagateLoader
-                  color={"#0336ff"}
-                  loading={this.props.isLoading}
-                />
+      <div className="container">
+        <Container>
+          <Header text={"React Redux Weather"} color={primaryColor} />
+          <Content>
+            <SearchBar
+              color={secondaryColor}
+              fetchWeather={fetchWeather}
+              errorMessage={errorMessage}
+            />
+            {/* conditional rendering of a loader */}
+            {this.props.isLoading && (
+              <div className="row">
+                <div className="col s12 offset-s6">
+                  <PropagateLoader
+                    color={"#0336ff"}
+                    loading={this.props.isLoading}
+                  />
+                </div>
               </div>
-            </div>
-          ) : null}
-          <WeatherList data={data} />
-        </Content>
-        <Footer primaryColor={primaryColor} />
-      </Container>
+            )}
+            <WeatherList data={data} />
+          </Content>
+          <Footer color={primaryColor} />
+        </Container>
+      </div>
     );
   }
 }
@@ -85,9 +98,10 @@ function mapDispatchToProps(dispatch) {
   Promote the "dumb", redux-unaware, presentational component, to a "smart",
   redux-aware, container component.
 */
-const AppWithRedux = connect(
+const enhance = connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+);
+const AppWithRedux = enhance(App);
 
 export { App, AppWithRedux };

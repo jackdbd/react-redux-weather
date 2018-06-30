@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class SearchBar extends Component {
   constructor(props) {
@@ -20,7 +21,8 @@ class SearchBar extends Component {
   }
 
   render() {
-    const { errorMessage } = this.props;
+    const { color, errorMessage } = this.props;
+    const buttonClassName = `${color} btn-flat white-text`;
     return (
       <div className="row">
         <form
@@ -36,15 +38,15 @@ class SearchBar extends Component {
                 value={this.state.term}
                 onChange={this.onInputChange}
               />
-              {errorMessage ? (
+              {errorMessage && (
                 <label className="red-text" style={{ marginTop: "2.5rem" }}>
                   {errorMessage}
                 </label>
-              ) : null}
+              )}
             </div>
 
             <div className="input-field col s3">
-              <button type="submit" className="teal btn-flat white-text">
+              <button type="submit" className={buttonClassName}>
                 Submit
                 <i className="material-icons right">wb_sunny</i>
               </button>
@@ -55,5 +57,15 @@ class SearchBar extends Component {
     );
   }
 }
+
+SearchBar.defaultProps = {
+  color: "teal darken-2"
+};
+
+SearchBar.propTypes = {
+  color: PropTypes.string,
+  errorMessage: PropTypes.string,
+  fetchWeather: PropTypes.func.isRequired
+};
 
 export default SearchBar;

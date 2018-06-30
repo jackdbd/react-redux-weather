@@ -24,7 +24,7 @@ function fetchWeatherFail(error) {
   return action;
 }
 
-export function fetchWeather(city = "San Francisco") {
+export function fetchWeather(city) {
   const promise = axios({
     url: `${ROOT_URL}&q=${city}`,
     method: "get"

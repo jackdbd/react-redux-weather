@@ -1,9 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Weather from "./Weather";
 
 const WeatherList = props => {
   return (
-    <div>
+    <div className="weather-list">
       {/*
         README! Since in the reducer I insert a new city at the first position
         of the `data` array, I cannot use the index as the `key`. Also, since
@@ -15,6 +16,15 @@ const WeatherList = props => {
       })}
     </div>
   );
+};
+
+WeatherList.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      city: PropTypes.object.isRequired,
+      list: PropTypes.array.isRequired
+    })
+  ).isRequired
 };
 
 export default WeatherList;
