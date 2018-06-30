@@ -12,7 +12,7 @@
     "lint": "prettier --write '{,!(node_modules)/}**/*.{js,jsx}'",
     "coverage": "codecov",
     "ci": "npm-run-all --sequential test:verbose coverage",
-    "predeploy": "num run build",
+    "predeploy": "yarn run build",
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
